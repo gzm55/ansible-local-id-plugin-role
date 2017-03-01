@@ -1,0 +1,26 @@
+galaxy_info:
+  author: James Z.M. Gao
+  description: A lookup plugin for getting the user id or name of the current ansible process.
+
+  license: BSD
+
+  min_ansible_version: 2.0
+
+  platforms:
+  - name: GenericBSD
+    versions:
+    - any
+  - name: GenericLinux
+    versions:
+    - any
+  - name: Windows
+    versions:
+    - all
+  - name: GenericUNIX
+    versions:
+    - any
+
+  galaxy_tags: [system]
+
+allow_duplicates: no
+dependencies: []

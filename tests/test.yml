@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  gather_facts: False
+  roles:
+  - ansible-local-id-plugin-role
+
+  tasks:
+  - assert:
+      that:
+      - "lookup('id', 'uid') | string == lookup('pipe', 'id -ru')"
+      - "lookup('id', 'euid') | string == lookup('pipe', 'id -u')"
+      - "lookup('id', 'uname') == lookup('pipe', 'id -run')"
+      - "lookup('id', 'euname') == lookup('pipe', 'id -un')"
+      - "lookup('id') == []"
+      - "lookup('id', 'euid', 'euname', wantlist=True) | map('string') | list | symmetric_difference(lookup('pipe', 'id -u', 'id -un', wantlist=True)) | list == []"
